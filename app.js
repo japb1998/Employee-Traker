@@ -1,3 +1,4 @@
+require('dotenv').config();
 const mysql = require('mysql');
 const inquirer = require('inquirer');
 let departmentArray = new Array;
@@ -7,7 +8,7 @@ const StartingQuestions = [{
     name: 'pick',
     type: 'list',
     question: 'What would you like to do?',
-    choices: ['add employee', 'add Department', 'add Role', 'view Employee', 'view Roles', 'view Departments', 'Update Employee Role', 'EXIT']
+    choices: ['add employee', 'add Department', 'add Role', 'view Employee', 'view Roles', 'view Departments', 'Update Employee Role','EXIT']
 }];
 
 const addEmployeeQuestions = [{
@@ -84,10 +85,10 @@ const updateEmployeeQuestions = [{
 
 const connection = mysql.createConnection({
     host: 'localhost',
-    user: 'root',
-    port: 3306,
-    password: '',
-    database: 'company_db'
+    user: process.env.USER_DB,
+    port: process.env.PORT_DB,
+    password: process.env.PASSWORD_DB,
+    database: process.env.NAME_DB
 });
 
 connection.connect((err) => {
@@ -126,7 +127,6 @@ function createEmployeeTable(firstName, lastName, role, department_id, manager) 
         manager_id: manager
     }, (err, res) => {
         if (err) throw err;
-        console.log(res);
         //after employee is added it starts again
         ask();
 
@@ -336,7 +336,7 @@ function ask() {
             updateEmployee();
         }
         if (res.pick === 'EXIT') {
-            connection.end();
+           process.exit();
         };
 
     })
