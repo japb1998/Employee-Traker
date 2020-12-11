@@ -1,4 +1,4 @@
- INSERT INTO employee(first_name,last_name,role_id,department_id,manager_id) VALUES ('Javier','Perez',1,1,2);
+INSERT INTO employee (first_name,last_name,role_id,department_id,manager_id) VALUES ('Javier','Perez',1,1,2);
 INSERT INTO employee (first_name,last_name,role_id,department_id,manager_id) VALUES ('Stephany','Perez',2,2,3);
 INSERT INTO employee (first_name,last_name,role_id,department_id,manager_id) VALUES ('Samy','Barrios',3,3,1);
 INSERT INTO employee (first_name,last_name,role_id,department_id,manager_id) VALUES ('Patricia','Villasmil',1,2,3);
